@@ -20,3 +20,6 @@ Created to be an e-wallet for cryptocurrency, Snakecoin.
 
 ## Starting it up
     yarn start # or use `npm start`
+
+## Resource
+favicon - https://www.favicon.cc/?action=icon&file_id=698808
