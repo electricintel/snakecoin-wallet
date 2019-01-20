@@ -1,5 +1,6 @@
 import React from 'react'
 import {Menu} from 'antd'
+import {Link} from 'react-router-dom'
 import Logo from './Logo'
 import Constant from './Constant'
 
@@ -16,7 +17,7 @@ export default(props)=>{
       >
         {
           modules.map((e,i)=>(
-            <Menu.Item key={`${i}`}>{e}</Menu.Item>
+            <Menu.Item key={`${i}`}><Link to={`/${e.key}`}>{e.name}</Link></Menu.Item>
           ))
         }
       </Menu>

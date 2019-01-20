@@ -1,5 +1,5 @@
 export default {
-  "My Account": require('./module/MyAccount.js').default,
-  "Transfer": require('./module/Transfer.js').default,
-  "History": require('./module/History.js').default,
+  account: require('./module/MyAccount.js'),
+  transfer: require('./module/Transfer.js'),
+  history: require('./module/History.js'),
 }

@@ -3,10 +3,11 @@ export default {
     icon: '\u{1f4b0}',
     name: 'SnakeCoin Wallet',
     by: 'M Junaidi',
+    country: 'Malaysia',
   },
   modules: [
-    'My Account',
-    'Transfer',
-    'History',
+    {key:'account',name:'My Account'},
+    {key:'transfer',name:'Transfer'},
+    {key:'history',name:'History'},
   ],
 }
