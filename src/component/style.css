@@ -1,0 +1,26 @@
+@import '~antd/dist/antd.css';
+
+.ant-breadcrumb, .ant-menu, .ant-message, .ant-tooltip, body {
+  font-family: AppleSDGothicNeo-UltraLight,Microsoft YaHei UI Light,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+
+#root>.ant-layout>.ant-layout-header {
+  background-color: white;
+}
+
+#root>.ant-layout>.ant-layout-header>.logo {
+  width: 150px;
+  height: 31px;
+  margin: 16px 0 16px 0;
+  float: left;
+  line-height: 31px;
+  font-weight: 600;
+}
+
+#root>.ant-layout>.ant-layout-content {
+  padding: 0 50px;
+}
+
+#root>.ant-layout>.ant-layout-footer {
+  text-align: center;
+}
