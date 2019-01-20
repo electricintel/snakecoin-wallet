@@ -1,0 +1,29 @@
+@media only screen and (max-width:767px) {
+  .ant-layout-header {
+    padding: 0 0 0 20px;
+  }
+  #root>.ant-layout>.ant-layout-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #root>.ant-layout>.ant-layout-content>.ant-breadcrumb {
+    padding: 0 20px;
+  }
+}
+
+.ant-layout-header>.ant-menu.drawer-toggle {
+  display: none;
+}
+
+.ant-drawer-body {
+  padding: 0;
+}
+
+@media only screen and (max-width:480px) {
+  .ant-layout-header>.ant-menu {
+    display: none;
+  }
+  .ant-layout-header>.ant-menu.drawer-toggle {
+    display: block;
+  }
+}
