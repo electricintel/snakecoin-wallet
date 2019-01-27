@@ -21,7 +21,7 @@ export default class Formsify extends React.Component {
     const {onChange,value={}} = this.props
     if (typeof(onChange)==='function') {
       value[k] = v
-      onChange(value)
+      onChange(value,k)
     }
   }
   render() {
