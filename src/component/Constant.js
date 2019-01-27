@@ -10,4 +10,9 @@ export default {
     {key:'transfer',name:'Transfer'},
     {key:'history',name:'History'},
   ],
+  auth: {
+    username: 'username',
+    password: 'password',
+    confirmPassword: 'confirmPassword',
+  },
 }

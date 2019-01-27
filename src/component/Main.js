@@ -2,6 +2,7 @@ import React from 'react'
 import {Layout} from 'antd'
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Header from './Header'
+import Login from './Login'
 import DrawerMenu from './DrawerMenu'
 import Container from './Container'
 import Footer from './Footer'
@@ -27,7 +28,7 @@ export default class Main extends React.Component {
           <Layout.Content>
             <Switch>
               <Route path="/:key" component={Container} />
-              <Route path="/" component={Container} />
+              <Route path="/" component={Login} />
             </Switch>
           </Layout.Content>
           <Layout.Footer>
