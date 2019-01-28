@@ -1,6 +1,6 @@
 import React from 'react'
 import {Alert} from 'antd'
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 import Formsify from './Formsify'
 import Constant from './Constant'
 
@@ -76,16 +76,50 @@ export default class SignUp extends React.Component {
         //referrer: 'no-referrer',
         body: JSON.stringify(value)
       }).then(response=>{
-        console.log(response)
+        return response.json()
+      }).then(data=>{
+        if (typeof(data)==='object'&&data!==null) {
+          const {status,message} = data
+          if (status) {
+            this.setState({message},this.redirectToLogin)
+          } else {
+            const errorMessages = []
+            errorMessages.push(message)
+            this.setState({errorMessages})
+          }
+        }
       })
     }
+  }
+  redirectToLogin=()=>{
+    this.setState({redirectToLogin:true})
   }
   handleSubmit=event=>{
     event.preventDefault()
     this.signUp()
   }
+  renderMessage() {
+    const {message,errorMessages} = this.state
+    if (typeof(message)==='string'&&message.length>0) {
+      return (
+        <Alert message={message} type="success" className="text-center mb-4" showIcon />
+      )
+    }
+    if (Array.isArray(errorMessages)&&errorMessages.length>0) {
+      return errorMessages.map((e,i)=>(
+        <Alert key={i} type="error" message={e} className="text-center mb-3" showIcon />
+      ))
+    }
+    return null
+  }
   render() {
-    const {list,value,errorMessages} = this.state
+    const {list,value,redirectToLogin} = this.state
+    if (redirectToLogin) {
+      return <Redirect to={{
+        pathname: '/login',
+        state: {value},
+      }} />
+    }
     return (
       <div style={{ background: '#fff', padding: 24, minHeight: 280 }} className="mt-5">
         <h1 className="text-center mb-3">
@@ -93,13 +127,8 @@ export default class SignUp extends React.Component {
           <span> / </span>
           <span>Sign Up</span>
         </h1>
-        <Alert {...info} type="info" className="text-center mb-5" showIcon />
-        {
-          Array.isArray(errorMessages)&&
-          errorMessages.map((e,i)=>(
-            <Alert key={i} type="error" message={e} className="text-center" showIcon />
-          ))
-        }
+        <Alert {...info} type="info" className="text-center mb-4" showIcon />
+        {this.renderMessage()}
         <Formsify list={list} value={value} submitLabel="Sign up" onChange={this.handleChange} onSubmit={this.handleSubmit} />
       </div>
     )
