@@ -64,8 +64,13 @@ export default class History extends React.Component {
         {key:'to',dataIndex:'to',title:'To'},
         {key:'amount',dataIndex:'amount',title:'Amount'},
       ]
+      const dataSource = history.reverse().map((e,i)=>{
+        const data = {...e}
+        data.key = `${i}`
+        return data
+      })
       return (
-        <Table rowKey="from" dataSource={history} columns={columns} />
+        <Table dataSource={dataSource} columns={columns} />
       )
     }
     return <Alert message="Empty" type="info" showIcon />
