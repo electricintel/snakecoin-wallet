@@ -1,4 +1,5 @@
 import React from 'react'
+import {Redirect} from 'react-router-dom'
 import {Breadcrumb,Alert} from 'antd'
 import Constant from '../Constant'
 
@@ -27,6 +28,8 @@ export default class MyAccount extends React.Component {
           this.setState({name,balance,timestamp})
         }
       })
+    } else {
+      this.setState({redirect:true})
     }
   }
   renderError() {
@@ -58,6 +61,10 @@ export default class MyAccount extends React.Component {
     return null
   }
   render() {
+    const {redirect} = this.state
+    if (redirect) {
+      return <Redirect to={{pathname: '/login'}} />
+    }
     return (
       <div className="content">
         <Breadcrumb>
