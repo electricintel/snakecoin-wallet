@@ -2,7 +2,6 @@
   "name": "swallet",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mjunaidi.github.io/snakecoin-wallet",
   "dependencies": {
     "antd": "^3.12.3",
     "react": "^16.7.0",
