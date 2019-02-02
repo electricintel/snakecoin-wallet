@@ -9,6 +9,9 @@
   #root>.ant-layout>.ant-layout-content>.ant-breadcrumb {
     padding: 0 20px;
   }
+  #root>.ant-layout>.ant-layout-content>.content>.ant-breadcrumb {
+    margin: 16px;
+  }
 }
 
 .ant-layout-header>.ant-menu.drawer-toggle {

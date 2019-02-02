@@ -3,12 +3,14 @@ import {Breadcrumb} from 'antd'
 
 export default(props)=>{
   return (
-    <React.Fragment>
-      <Breadcrumb style={{ margin: '16px 0' }}>
+    <div className="content">
+      <Breadcrumb>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>My Account</Breadcrumb.Item>
       </Breadcrumb>
-      <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>My Account</div>
-    </React.Fragment>
+      <div className="main-content">
+        <h1>My Account</h1>
+      </div>
+    </div>
   )
 }

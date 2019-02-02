@@ -26,12 +26,15 @@
   text-align: center;
 }
 
+#root>.ant-layout>.ant-layout-content>.content>.ant-breadcrumb {
+  margin: 16px 0;
+}
+
 #root>.ant-layout>.ant-layout-content>div>.main-content {
   background: white;
   padding: 24px;
   min-height: 280;
 }
-
 
 .float-left {
   float: left;
