@@ -48,10 +48,11 @@ export default class History extends React.Component {
     const {name,timestamp} = this.state
     return (
       <div>
-        <h5>User</h5>
+        <h5>Name</h5>
         <h4>{name}</h4>
         <h5>Last transaction on</h5>
         <h4>{timestamp}</h4>
+        <div className="mb-5" />
         {this.renderList()}
       </div>
     )

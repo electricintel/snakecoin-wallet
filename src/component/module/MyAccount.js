@@ -49,7 +49,7 @@ export default class MyAccount extends React.Component {
     if (typeof(balance)==='number') {
       return (
         <div>
-          <h5>User</h5>
+          <h5>Name</h5>
           <h4>{name}</h4>
           <h3>Balance</h3>
           <h1>{balance} {'\u20b4'}</h1>
