@@ -3,5 +3,6 @@ export default {
   transfer: require('./module/Transfer.js'),
   history: require('./module/History.js'),
   login: require('./Login.js'),
+  logout: require('./Logout.js'),
   signup: require('./SignUp.js'),
 }

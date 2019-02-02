@@ -9,6 +9,7 @@ export default {
     {key:'account',name:'My Account'},
     {key:'transfer',name:'Transfer'},
     {key:'history',name:'History'},
+    {key:'logout',name:'Logout'},
   ],
   auth: {
     username: 'username',
