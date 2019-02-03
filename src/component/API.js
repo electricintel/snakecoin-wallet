@@ -84,3 +84,23 @@ export const history=(username,cb,cbe)=>{
     })
   }
 }
+
+export const transfer=(value,cb,cbe)=>{
+  if (typeof(value)==='object'&&value!==null) {
+    const url = uri('transfer')
+    fetch(url, {
+      method: 'POST',
+      cache: 'no-cache',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(value)
+    }).catch(e=>{
+      if (typeof(cbe)==='function') cbe(e)
+    }).then(response=>{
+      return response.json()
+    }).catch(e=>{
+      if (typeof(cbe)==='function') cbe(e)
+    }).then(data=>{
+      if (typeof(cb)==='function') cb(data)
+    })
+  }
+}

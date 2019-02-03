@@ -91,15 +91,7 @@ export default class Transfer extends React.Component {
       const value = {
         from: name, to, amount: parseInt(amount),
       }
-      const url = 'http://localhost:5000/transfer'
-      fetch(url, {
-        method: 'POST',
-        cache: 'no-cache',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(value)
-      }).then(response=>{
-        return response.json()
-      }).then(data=>{
+      API.transfer(value,data=>{
         if (typeof(data)==='object'&&data!==null) {
           //{status: true, timestamp: "2019-02-03 03:37:11.956160", message: "Successfully transfer from h to a with amount of 1"}
           const {status,message,timestamp} = data
