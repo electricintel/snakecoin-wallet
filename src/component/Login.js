@@ -3,6 +3,7 @@ import {Link,Redirect} from 'react-router-dom'
 import {Alert} from 'antd'
 import Formsify from './Formsify'
 import Constant from './Constant'
+import * as API from './API'
 
 export default class Login extends React.Component {
   state={}
@@ -52,15 +53,7 @@ export default class Login extends React.Component {
     event.preventDefault()
     if (this.validate()) {
       const {value} = this.state
-      const url = 'http://localhost:5000/login'
-      fetch(url, {
-        method: 'POST',
-        cache: 'no-cache',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(value)
-      }).then(response=>{
-        return response.json()
-      }).then(data=>{
+      API.login(value,data=>{
         if (typeof(data)==='object'&&data!==null) {
           const {status,message} = data
           if (status) {
