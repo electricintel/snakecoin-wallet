@@ -1,12 +1,18 @@
 # Snakecoin Wallet
 Created to be an e-wallet for cryptocurrency, Snakecoin.
 
+## Live Demo
+[SnakeCoin Wallet](https://www.snakecoin.live)
+
 ## Modules
 ### 1. My account
+See balance of user account.
 
 ### 2. Transfer
+Transfer amount of coin to another account.
 
 ### 3. History
+See and track account transactions.
 
 ## How is this project created?
     npx create-react-app snakecoin-wallet
