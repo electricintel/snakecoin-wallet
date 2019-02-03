@@ -15,6 +15,30 @@ export const uri=(p,q,f)=>{
   return uri.join('')
 }
 
+export const signup=(value,cb,cbe)=>{
+  if (typeof(value)==='object'&&value!==null) {
+    const url = uri('register')
+    fetch(url, {
+      method: 'POST',
+      //mode: 'no-cors',
+      cache: 'no-cache',
+      //credentials: 'include',
+      headers: {'Content-Type':'application/json'},
+      //redirect: 'follow',
+      //referrer: 'no-referrer',
+      body: JSON.stringify(value)
+    }).catch(e=>{
+      if (typeof(cbe)==='function') cbe(e)
+    }).then(response=>{
+      return response.json()
+    }).catch(e=>{
+      if (typeof(cbe)==='function') cbe(e)
+    }).then(data=>{
+      if (typeof(cb)==='function') cb(data)
+    })
+  }
+}
+
 export const login=(value,cb,cbe)=>{
   if (typeof(value)==='object'&&value!==null) {
     const url = uri('login')

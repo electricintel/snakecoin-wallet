@@ -3,6 +3,7 @@ import {Alert} from 'antd'
 import {Link,Redirect} from 'react-router-dom'
 import Formsify from './Formsify'
 import Constant from './Constant'
+import * as API from './API'
 
 const info = {
   message:"Free Coins",
@@ -65,19 +66,7 @@ export default class SignUp extends React.Component {
   signUp=()=>{
     const {value} = this.state
     if (this.validate()) {
-      const url = 'http://localhost:5000/register'
-      fetch(url, {
-        method: 'POST',
-        //mode: 'no-cors',
-        cache: 'no-cache',
-        //credentials: 'include',
-        headers: {'Content-Type':'application/json'},
-        //redirect: 'follow',
-        //referrer: 'no-referrer',
-        body: JSON.stringify(value)
-      }).then(response=>{
-        return response.json()
-      }).then(data=>{
+      API.signup(value,data=>{
         if (typeof(data)==='object'&&data!==null) {
           const {status,message} = data
           if (status) {
