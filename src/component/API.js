@@ -35,6 +35,19 @@ export const login=(value,cb,cbe)=>{
   }
 }
 
+export const balance=(username,cb,cbe)=>{
+  if (typeof(username)==='string'&&username.length>0) {
+    const url = uri('balance',username)
+    fetch(url).then(response=>{
+      return response.json()
+    }).catch(e=>{
+      if (typeof(cbe)==='function') cbe(e)
+    }).then(data=>{
+      if (typeof(cb)==='function') cb(data)
+    })
+  }
+}
+
 export const history=(username,cb,cbe)=>{
   if (typeof(username)==='string'&&username.length>0) {
     const url = uri('history',username)
