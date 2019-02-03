@@ -16,21 +16,34 @@ export const uri=(p,q,f)=>{
 }
 
 export const login=(value,cb,cbe)=>{
-  const url = uri('login')
-  fetch(url, {
-    method: 'POST',
-    cache: 'no-cache',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(value)
-  }).catch(e=>{
-    console.error(e)
-    if (typeof(cbe)==='function') cbe(e)
-  }).then(response=>{
-    return response.json()
-  }).catch(e=>{
-    console.error(e)
-    if (typeof(cbe)==='function') cbe(e)
-  }).then(data=>{
-    if (typeof(cb)==='function') cb(data)
-  })
+  if (typeof(value)==='object'&&value!==null) {
+    const url = uri('login')
+    fetch(url, {
+      method: 'POST',
+      cache: 'no-cache',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(value)
+    }).catch(e=>{
+      if (typeof(cbe)==='function') cbe(e)
+    }).then(response=>{
+      return response.json()
+    }).catch(e=>{
+      if (typeof(cbe)==='function') cbe(e)
+    }).then(data=>{
+      if (typeof(cb)==='function') cb(data)
+    })
+  }
+}
+
+export const history=(username,cb,cbe)=>{
+  if (typeof(username)==='string'&&username.length>0) {
+    const url = uri('history',username)
+    fetch(url).then(response=>{
+      return response.json()
+    }).catch(e=>{
+      if (typeof(cbe)==='function') cbe(e)
+    }).then(data=>{
+      if (typeof(cb)==='function') cb(data)
+    })
+  }
 }

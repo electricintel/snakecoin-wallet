@@ -2,6 +2,7 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {Table,Breadcrumb,Alert} from 'antd'
 import Constant from '../Constant'
+import * as API from '../API'
 
 export default class History extends React.Component {
   state={}
@@ -11,21 +12,18 @@ export default class History extends React.Component {
   fetch() {
     const username = localStorage.getItem(Constant.auth.username)
     if (typeof(username)==='string'&&username.length>0) {
-      const url = `http://localhost:5000/history?${username}`
-      fetch(url).then(response=>{
-        return response.json()
-      }).catch(e=>{
+      API.history(username,data=>{
+        if (typeof(data)==='object'&&data!==null) {
+          const {name,history,timestamp} = data
+          this.setState({name,history,timestamp})
+        }
+      },e=>{
         if (typeof(e)==='object'&&e!==null) {
           const {name,message} = e
           const error = {name,message}
           this.setState({error})
         } else {
           console.error(e);
-        }
-      }).then(data=>{
-        if (typeof(data)==='object'&&data!==null) {
-          const {name,history,timestamp} = data
-          this.setState({name,history,timestamp})
         }
       })
     } else {
