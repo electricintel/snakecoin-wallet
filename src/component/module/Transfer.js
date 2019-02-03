@@ -2,6 +2,7 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {Row,Col,Breadcrumb,Alert,Input,Icon,Button} from 'antd'
 import Constant from '../Constant'
+import * as API from '../API'
 
 export default class Transfer extends React.Component {
   state={}
@@ -11,21 +12,18 @@ export default class Transfer extends React.Component {
   fetch() {
     const username = localStorage.getItem(Constant.auth.username)
     if (typeof(username)==='string'&&username.length>0) {
-      const url = `http://localhost:5000/balance?${username}`
-      fetch(url).then(response=>{
-        return response.json()
-      }).catch(e=>{
+      API.balance(username,data=>{
+        if (typeof(data)==='object'&&data!==null) {
+          const {name,balance,timestamp} = data
+          this.setState({name,balance,timestamp})
+        }
+      },e=>{
         if (typeof(e)==='object'&&e!==null) {
           const {name,message} = e
           const error = {name,message}
           this.setState({error})
         } else {
           console.error(e);
-        }
-      }).then(data=>{
-        if (typeof(data)==='object'&&data!==null) {
-          const {name,balance,timestamp} = data
-          this.setState({name,balance,timestamp})
         }
       })
     } else {
