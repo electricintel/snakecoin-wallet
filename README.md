@@ -4,6 +4,12 @@ Created to be an e-wallet for cryptocurrency, Snakecoin.
 ## Live Demo
 [SnakeCoin Wallet](https://www.snakecoin.live)
 
+## Note
+On testing locally or any different host, change the HOST_URL to use the right URL.
+
+### For example, if the host is run locally
+    export const HOST_URL = 'http://localhost:5000'
+
 ## Modules
 ### 1. My account
 See balance of user account.

@@ -1,4 +1,5 @@
-export const HOST_URL = 'http://localhost:5000'
+//export const HOST_URL = 'http://localhost:5000'
+export const HOST_URL = 'http://snakecoin.host:5000'
 
 // path, query, fragment
 export const uri=(p,q,f)=>{
